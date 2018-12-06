@@ -3,8 +3,9 @@
 @import "reset";
 @import "icon";
 @import "dialog";
-
-html, body, #root {
+html,
+body,
+#root {
   position: relative;
   height: 100%;
   width: 100%;
@@ -14,20 +15,24 @@ html, body, #root {
 }
 
 body {
-	background: $black;
+  background: $black;
   font-family: $font-family;
-	font-size: 14px;
+  font-size: 14px;
+  &.dialog-open {
+    overflow: hidden;
+  }
+}
 
-	&.dialog-open {
-		overflow: hidden;
-	}
+#map .mapboxgl-canvas {
+  left: 0px;
 }
 
 // 定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸
-::-webkit-scrollbar{
-    width: 0;
-    background-color: transparent;
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
 }
-::-webkit-scrollbar-track{
-    background-color: transparent;
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
