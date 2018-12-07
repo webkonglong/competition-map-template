@@ -2,10 +2,16 @@ import React from 'react'
 import Component from '@/Component'
 import mapboxgl from 'mapbox-gl'
 import Loading from '@/components/Loading'
+import amapLocation from './amapLocation'
 import styles from './map.scss'
 
 class Map extends Component {
+  // 地图
   map = null
+  // 我的坐标 类似array
+  myLocation = null
+  // 我的位置的icon
+  myLocationComp = null
 
   state = {
     mapload: false
@@ -34,6 +40,29 @@ class Map extends Component {
   mapLoad () {
     this.map.resize()
     this.setState({ mapload: true })
+    amapLocation.getMyLocatio(resp => {
+      this.myLocation = resp
+      this.moveMapCenterPoint()
+    }, err => {
+      console.log(err)
+    })
+  }
+
+  moveMapCenterPoint () {
+    console.log(this.myLocation)
+    this.map.flyTo({ center: this.myLocation, zoom: 13 })
+
+    this.myLocationComp = new mapboxgl.Marker(this.createMarkerElement())
+    this.myLocationComp.setLngLat(this.myLocation).addTo(this.map)
+  }
+
+  createMarkerElement () {
+    const container = document.createElement('div')
+    const iNode = document.createElement('i')
+    container.className = 'g-my-location-comp'
+    iNode.className = 'icon icon-location'
+    container.appendChild(iNode)
+    return container
   }
 
   render() {

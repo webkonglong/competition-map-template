@@ -1,0 +1,16 @@
+.#{$global-prefix} {
+  &-my-location-comp {
+    width: 30px;
+    height: 30px; 
+    background: #fff; 
+    border: 1px solid #6070E9; 
+    border-radius: 50%; 
+    position: relative;
+
+    i {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+    }
+  }
+}
