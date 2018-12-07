@@ -1,13 +1,23 @@
 import React from 'react'
 import Component from '@/Component'
 import mapboxgl from 'mapbox-gl'
+import Loading from '@/components/Loading'
 import styles from './map.scss'
 
 class Map extends Component {
   map = null
 
+  state = {
+    mapload: false
+  }
+
   componentDidMount () {
+    this.initMap()
+  }
+
+  initMap () {
     mapboxgl.accessToken = 'null'
+
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'https://maps.tilehosting.com/c/adbc36eb-6765-4278-8c1a-b14fa25d0ae2/styles/basic-dark/style.json?key=eT7rAVG6glnuTf9iWHbK',
@@ -16,17 +26,21 @@ class Map extends Component {
       height: '100%',
       zoom: 9
     })
-
-    
     this.map.on('load', () => {
-      this.map.resize()
-      console.log(1)
+      this.mapLoad()
     })
   }
+
+  mapLoad () {
+    this.map.resize()
+    this.setState({ mapload: true })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <div className={styles.aaa}><div id="map" className={styles.map} /></div>
+        {!this.state.mapload && <Loading isMap />}
+        <div className="g-absolute-fill"><div id="map" className={styles.map} /></div>
       </React.Fragment>
     )
   }
