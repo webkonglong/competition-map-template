@@ -1,7 +1,9 @@
 import React from 'react'
+import { render } from 'react-dom'
 import Component from '@/Component'
 import mapboxgl from 'mapbox-gl'
 import Loading from '@/components/Loading'
+import Popup from './popup'
 import amapLocation from './amapLocation'
 import styles from './map.scss'
 
@@ -12,6 +14,8 @@ class Map extends Component {
   myLocation = null
   // 我的位置的icon
   myLocationComp = null
+  // popup
+  popupComp = null
 
   state = {
     mapload: false
@@ -49,19 +53,39 @@ class Map extends Component {
   }
 
   moveMapCenterPoint () {
-    console.log(this.myLocation)
     this.map.flyTo({ center: this.myLocation, zoom: 13 })
+    this.createMyMarker()
+    this.createPupup()
+  }
 
-    this.myLocationComp = new mapboxgl.Marker(this.createMarkerElement())
+  createMyMarker () {
+    this.myLocationComp = new mapboxgl.Marker(this.markerElement())
     this.myLocationComp.setLngLat(this.myLocation).addTo(this.map)
   }
 
-  createMarkerElement () {
+  markerElement () {
     const container = document.createElement('div')
     const iNode = document.createElement('i')
     container.className = 'g-my-location-comp'
     iNode.className = 'icon icon-location'
     container.appendChild(iNode)
+    return container
+  }
+
+  createPupup() {
+    this.popupComp = new mapboxgl.Popup({
+      offset: 25,
+      closeButton: false,
+      closeOnClick: false,
+      className: 'g-popup'
+    }).setDOMContent(this.popupElement())
+
+    this.popupComp.setLngLat(this.myLocation).addTo(this.map)
+  }
+
+  popupElement () {
+    const container = document.createElement('div')
+    render(<Popup />, container)
     return container
   }
 
