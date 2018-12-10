@@ -552,7 +552,9 @@ class Globe extends Component {
       console.log(code, 'code')
     })
     this.renderPrice()
-    window.addEventListener('resize', this.globeRenderer.onWindowResize)
+    window.addEventListener('resize', () => {
+      this.globeRenderer.onWindowResize()
+    })
 
     if (this.props.value) {
       this.globeRenderer.focusCountry(this.props.value)
