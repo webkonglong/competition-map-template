@@ -433,7 +433,6 @@ class GlobeRenderer extends EventEmitter2 {
 
   // @autobind
   animate() {
-    console.log(this, 'running')
     if (!this.running) {
       return;
     }

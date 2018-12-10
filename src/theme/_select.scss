@@ -1,0 +1,20 @@
+.#{$component-prefix} {
+  &-select {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    background: #ccc;
+    option {
+      width: 100%;
+      max-width: 300px;
+      height: 30px;
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid #fff;
+      background: #ccc;
+    }
+  }
+}

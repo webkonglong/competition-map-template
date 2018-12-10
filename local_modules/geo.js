@@ -128,6 +128,9 @@ const Geo = {
    * Get a THREE.js line geometry from a GeoJson getmetry.
    */
   buildLinesFromGeoJson(geometry, radius, material) {
+    if (!geometry) {
+      return false
+    }
     const meshes = []
 
     let xValues = []
