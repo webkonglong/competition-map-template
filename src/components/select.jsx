@@ -18,15 +18,13 @@ class Select extends Component {
 
   change (e) {
     const { value } = e.target
-    this.setState({ value: this.props.getOptionText(value)}, () => {
-      this.props.change(value)
-    })
+    this.props.change(value)
   }
 
   render() {
     const { list, getOptionText, defaultValue } = this.props
     return (
-      <select className="c-select" onChange={this.change.bind(this)} value={this.state.value}>
+      <select className="c-select" onChange={this.change.bind(this)}>
         <option disabled="disabled" vlaue="">{defaultValue}</option>
         {list.map((item, i) => (
           <option key={i} value={item}>{getOptionText(item)}</option>

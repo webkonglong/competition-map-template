@@ -1,17 +1,15 @@
 
 import React from 'react'
 import Component from '@/Component'
-import styles from './earth.scss'
 import * as THREE from 'three'
 import Geo from 'geo'
 import countryLatLonJson from 'countryLatLon.json'
 import countryPointsJson from 'countryPoints.json'
 import * as CountryCode from 'i18n-iso-countries'
-import throttle from 'lodash-decorators/throttle'
-import { autobind } from 'core-decorators'
 import { EventEmitter2 } from 'eventemitter2'
 import isTouchDevice from 'is-touch-device'
 import Hammer from 'hammerjs'
+import styles from './earth.scss'
 
 
 const jitterRate = 0.5;
@@ -612,7 +610,7 @@ class Globe extends Component {
   }
 
   render() {
-    return <div ref={this.container} className="globe-container" />
+    return <div ref={this.container} className={styles.globeContainer} />
   }
 
   componentWillUnmount () {

@@ -28,12 +28,14 @@ class Earth extends Component {
   render() {
     return (
       <div className={styles.earth}>
-        <Select
-          list={this.state.allCountriesCodes}
-          getOptionText={this.getOptionText}
-          change={this.changeSelect.bind(this)}
-          defaultValue="Filter Country or Region"
-        />
+        <div className={styles.countrySelect}>
+          <Select
+            list={this.state.allCountriesCodes}
+            getOptionText={this.getOptionText}
+            change={this.changeSelect.bind(this)}
+            defaultValue="Filter Country or Region"
+          />
+        </div>
         <Globe
           value={this.state.activeCountryCode}
           countryPrice={this.state.countriesPriceMap}
