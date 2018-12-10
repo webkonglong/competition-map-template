@@ -23,7 +23,6 @@ const amapLocatio = {
         } else {
           try {
             const center = amap.getCenter()
-            console.log(center, 'center')
             if (center && center.lng && center.lat) {
               const coord = [center.lng, center.lat]
               success(coord)

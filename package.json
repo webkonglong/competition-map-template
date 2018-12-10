@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@geo-maps/countries-coastline-10km": "^0.6.0",
+    "lodash": "^4.17.11",
+    "lodash-decorators": "^6.0.0",
+    "hammerjs": "^2.0.8",
+    "i18n-iso-countries": "^3.7.8",
+    "is-touch-device": "^1.0.1",
+    "geolib": "^2.0.24",
+    "d3-geo": "^1.11.1",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
@@ -104,6 +112,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "react-hot-loader": "^4.3.11"
   }
 }
